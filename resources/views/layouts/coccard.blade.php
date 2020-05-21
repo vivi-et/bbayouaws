@@ -1,6 +1,7 @@
 <?php use App\GiftconTradePost; ?>
 @push('header')
 <link href="{{ asset('css/card.css') }}" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 @endpush
 <div class="row">
     {{-- barcode 번호 hidden 으로 숨겨짐! --}}
@@ -75,11 +76,11 @@
                     @else
                     <div class="clash-card__unit-stats clash-card__unit-stats--giant clearfix">
                         <div class="one-third" onclick="checkGiftcons( '{{ $giftcon->id }}', '{{ $giftcon->title }}' )">
-                            <div class="stat" >선물하기</div>
+                            <div class="stat">선물하기</div>
                             <div class="stat-value">Present</div>
                         </div>
 
-                        <div class="one-third" onclick="return confirm('정말 사용하시겠습니까? \n더 이상 해당 기프티콘을 거래하실 수 없습니다')" tabindex="0" onclick="makeImage({{ $giftcon->id }})">
+                        <div class="one-third" onclick="makeImage({{ $giftcon->id }})">
                             <div class="stat">사용하기</div>
                             <div class="stat-value">Use</div>
                         </div>
@@ -111,12 +112,14 @@
     </div>
 
 
+
     @endforeach
 </div>
 
 @push('script')
 <script>
     function makeImage(x) {
+        if (confirm('정말 사용하시겠습니까? \n더 이상 해당 기프티콘을 거래하실 수 없습니다')){
         $.ajax({
             type: "PATCH",
             url: "/giftcon/" + x,
@@ -135,6 +138,8 @@
             let ajaxbarcodeno = data.barcodeno;
             let downloadAs = data.downloadAs;
 
+        
+
             // alert(data.barcode);
             let theDiv = document.getElementById('theBarcode' + x);
             let theBarcodeno = document.getElementById('theBarcodeno' + x);
@@ -150,6 +155,8 @@
                     onrendered: function (canvas) {
                         var data = canvas.toDataURL('image/jpeg');
 
+                        console.log(data);
+
 
                         var link = document.createElement('a');
                         link.download = downloadAs;
@@ -163,7 +170,7 @@
         });
 
     };
-
+}
 </script>
 
 @endpush

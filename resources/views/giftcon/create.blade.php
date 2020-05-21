@@ -367,6 +367,7 @@
 
                     }
                     else{
+                        console.log(data.message);
                         alert(data.message);
                     }
 

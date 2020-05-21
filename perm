@@ -1,5 +1,5 @@
-sudo chown -R $USER:www-data storage
-sudo chown -R $USER:www-data bootstrap/cache
+ chown -R $USER:www-data storage
+ chown -R $USER:www-data bootstrap/cache
 
  
 

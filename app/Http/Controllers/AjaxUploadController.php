@@ -7,6 +7,7 @@ use Validator;
 use App\Giftcon;
 use App\GiftconTradePost;
 use Illuminate\Support\Facades\Auth;
+use thiagoalessio\TesseractOCR\TesseractOCR;
 
 class AjaxUploadController extends Controller
 
@@ -14,7 +15,7 @@ class AjaxUploadController extends Controller
 
     public function checkGiftcons()
     {
-       
+
 
         $giftcons = Auth::user()->giftcons->where('on_trade', '!=', 1)->all();
 
@@ -50,6 +51,17 @@ class AjaxUploadController extends Controller
     function crop(Request $request)
     {
 
+
+        if (!file_exists('storage/giftcon_images')) {
+            mkdir('storage/giftcon_images', 0775, true);
+        }
+
+        if (!file_exists('public/temp_images')) {
+            mkdir('public/temp_images', 0775, true);
+        }
+
+
+
         $xx = $request->x;
         $yy = $request->y;
         $new_width = $request->width;
@@ -58,7 +70,7 @@ class AjaxUploadController extends Controller
 
 
 
-        $src = 'storage/temp_images/' . $originalImagePath; 
+        $src = 'storage/temp_images/' . $originalImagePath;
 
         $filename = $src;
 
@@ -91,9 +103,7 @@ class AjaxUploadController extends Controller
         $croppedImagePath = time() . '.' . $ext;
         // imagejpeg($image_p, "storage/giftcon_images/" . $croppedImagePath);
 
-        if (!file_exists('storage/giftcon_images')) {
-            mkdir('storage/giftcon_images', 0775, true);
-        }
+
 
         switch ($ext) {
             case 'jpg':
@@ -122,6 +132,16 @@ class AjaxUploadController extends Controller
     }
     function action(Request $request)
     {
+
+        if (!file_exists('storage/giftcon_images')) {
+            mkdir('storage/giftcon_images', 0775, true);
+        }
+
+        if (!file_exists('public/temp_images')) {
+            mkdir('public/temp_images', 0775, true);
+        }
+
+
         $validation = Validator::make($request->all(), [
             'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -152,13 +172,29 @@ class AjaxUploadController extends Controller
         }
 
         //OCR 실행, 텍스트 추출 
-        $string = shell_exec('tesseract '. $_SERVER["DOCUMENT_ROOT"] .'/storage/temp_images/' . $fileNameToStore . ' stdout -l kor');
+        // $string = shell_exec('tesseract ' . $_SERVER["DOCUMENT_ROOT"] . '/storage/temp_images/' . $fileNameToStore . ' stdout -l kor');
+        // $string = 'tesseract '. $_SERVER["DOCUMENT_ROOT"] .'/storage/temp_images/' . $fileNameToStore . ' stdout -l kor';
+
+        $file = $_SERVER["DOCUMENT_ROOT"] . '/storage/temp_images/' . $fileNameToStore;
+        $string = (new TesseractOCR($file))
+            ->lang('kor')
+            ->run();
+
+
 
         //공백 포함 연속된 12~16개의 숫자를 저장 = 바코드번호
         preg_match('/(?:\d[ \-]*){12,16}/', $string, $barcodeNo);
 
         //연속된 9자리 숫자를 저장 = 주문번호
         preg_match('/\b\d{9}\b/', $string, $ocrorderno);
+
+
+
+
+
+
+
+
 
         //바코드 번호 이전 모든 문자를 삭제
         $expStr = explode($barcodeNo[0], $string);
@@ -170,12 +206,11 @@ class AjaxUploadController extends Controller
 
         $checkifExists = Giftcon::where('barcode', '=', $barcodeNo[0])->first(); // 바코드번호 중복 검사
 
-        if($checkifExists){
+        if ($checkifExists) {
             return response()->json([
                 'status' => 1,
-                'message'=> '이미 존재하는 기프티콘입니다',
+                'message' => '이미 존재하는 기프티콘입니다',
             ]);
-
         }
 
         //교환처가 없고 저 로 나올떄
