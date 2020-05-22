@@ -241,6 +241,9 @@ class AjaxUploadController extends Controller
         //@(.*?)[\s], @ to space 까지
         // $string = preg_replace('/교......../', '교환처', $string);
 
+        $string .= "\\n\n";
+        
+
 
         // 뽑아낼 항목들 지정
         $cat[0] = '유효기간';
@@ -260,6 +263,9 @@ class AjaxUploadController extends Controller
             $len = strpos($string, $end, $ini) - $ini;
             return substr($string, $ini, $len);
         }
+
+
+    
 
 
         // 년 월 도 string 날짜를 y m d date 형식으로 변경
@@ -284,6 +290,8 @@ class AjaxUploadController extends Controller
         }
 
 
+    
+        
 
         //catdata[0, 3], 유효기한, 받은날짜
         $catdata[0] = strtodate($catdata[0]);
@@ -325,15 +333,27 @@ class AjaxUploadController extends Controller
         }
 
 
+
         //catdata[4] 기프티콘 사용 여부 확인
-        $used = 2;
-        $usedstr = '미기재';
+     
         if ($catdata[4] == '사용완료') {
             $used = 1;
             $usedstr = '사용완료';
         } elseif ($catdata[4] == '사용안함') {
             $used = 0;
             $usedstr = '사용안함';
+        }else{
+            $used = 2;
+            $usedstr = '미기재';
+        }
+
+
+
+        if ($used == 1) {
+            return response()->json([
+                'status' => 1,
+                'message' => '이미 사용된 기프티콘입니다',
+            ]);
         }
 
         //catdata[5], 바코드
