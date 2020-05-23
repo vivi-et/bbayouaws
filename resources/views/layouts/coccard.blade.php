@@ -20,10 +20,12 @@
                             alt="barbarian"></div>
                     </div>
                     <div class="clash-card__level clash-card__level--barbarian">
-                        <a href="#">{{ $giftcon->user->name }}</a>
+                        {{-- <a href="#"> --}}
+                            {{ $giftcon->user->name }}
+                        {{-- </a> --}}
                     </div>
                     <div class="clash-card__unit-name" style="overflow: hidden; margin:0 20px; font-size:22px;">
-                        <a href="/giftcon/{{ $giftcon->id }}"> {{ $giftcon->title }}</a></div>
+                        {{ $giftcon->title }}</div>
                     <div class="clash-card__unit-description">
                         번호 : {{$giftcon->id}}
                         <br />
