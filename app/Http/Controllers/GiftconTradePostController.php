@@ -230,7 +230,7 @@ class GiftconTradePostController extends Controller
         $thispost->delete();     //게시글 삭제
 
 
-        return redirect()->action('GiftconTradePostController@index');
+        return redirect('/giftcon');
 
     }
 }

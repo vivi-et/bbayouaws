@@ -63,7 +63,7 @@
                     </div>
 
                     @if($giftcon->used == 1)
-                    <div class="clash-card__unit-stats clash-card__unit-stats--giant clearfix">
+                    <div class="clash-card__unit-stats clash-card__unit-stats--giant clearfix" style="background-color: gray;">
                         사용완료
                     </div>
                     @elseif($giftcon->on_trade == 1)
