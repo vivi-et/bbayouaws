@@ -116,6 +116,8 @@ class GiftconTradeCommentController extends Controller
         //게시글 (게시글 기프티콘 -> 댓글 작성자)
         $thispost = GiftconTradePost::find($request->thispostid);           //이 게시글
 
+        
+
 
         $othercommentGiftcons = GiftconTradeComment::with('giftcons')       //거래된 댓글외 나머지 댓글들 처리
             ->where('id', '!=', $tradecomment->id)                          //거래된 댓글이 아니고
@@ -133,14 +135,16 @@ class GiftconTradeCommentController extends Controller
             $othercommentGiftcon->delete();                                             //댓글 삭제
         }
         
+    
 
-
-        $thispostGiftcon = Giftcon::find($thispost->giftcon_id)->first();   //이 게시글의 기프티콘
+        $thispostGiftcon = Giftcon::find($thispost->giftcon_id);   //이 게시글의 기프티콘
         $thispostGiftcon->user_id = $tradecomment->user_id;                 //소유자 바꿈 (to 댓글 작성자)
         $thispostGiftcon->on_trade = 0;                                     //현재 교환중 상태 해제
         $thispost->traded = 1;                                              //교환 완료 처리
         $thispost->save();
         $thispostGiftcon->save();
+
+
 
         //댓글 (댓글 기프티콘 -> 게시글 작성자)
         $hasTheseGiftcons = $tradecomment->giftcons;    // 이 댓글의 기프티콘들
