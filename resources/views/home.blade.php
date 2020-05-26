@@ -15,6 +15,8 @@
 </section>
 
 
+
+
 <div style="text-align: center">
     <h3>최근 게시물들</h3>
 </div>
