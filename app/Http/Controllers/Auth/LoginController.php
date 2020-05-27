@@ -58,18 +58,18 @@ class LoginController extends Controller
         return $user;
 
 
-        //사용자 생성
-        $user = User::create([
+        // //사용자 생성
+        // $user = User::create([
 
-            'email' => $user->getEmail(),
-            'name' => $user->getNickname(),
-            'provider_id' => $user->getId(),
-            'provider' => $provider,
+        //     'email' => $user->getEmail(),
+        //     'name' => $user->getNickname(),
+        //     'provider_id' => $user->getId(),
+        //     'provider' => $provider,
 
-        ]);
-        // 시용자 로그인
-        Auth::login($user, true);
+        // ]);
+        // // 시용자 로그인
+        // Auth::login($user, true);
 
-        return redirect($this->redirectTo);
+        // return redirect($this->redirectTo);
     }
 }
