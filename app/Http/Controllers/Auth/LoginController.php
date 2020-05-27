@@ -58,7 +58,7 @@ class LoginController extends Controller
         $existingUser = User::whereEmail($user->getEmail())->first();
 
         if ($existingUser) {
-            Auth::login($user, true);
+            auth()->login($existingUser);
             return redirect($this->redirectPath());
         } else {
             //사용자 생성
