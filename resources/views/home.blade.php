@@ -9,8 +9,8 @@
 <section class="jumbotron text-center">
     <div class="container">
         <h2>BBAYOU</h2>
-        <h1>뭐</h1>
-        <p class="lead text-muted">디자인 구진거 안다</p>
+        <h1></h1>
+        <p class="lead text-muted">A Giftcon Commumity</p>
     </div>
 </section>
 
