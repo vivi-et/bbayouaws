@@ -76,6 +76,10 @@
                                     <img src="/social/kakao.png" style="width: 32px;" alt="">
                                 </a>
 
+                                <a href="/login/facebook">
+                                    <img src="/social/facebook.png" style="width: 32px;" alt="">
+                                </a>
+
 
 
                                 {{-- @if (Route::has('password.request'))

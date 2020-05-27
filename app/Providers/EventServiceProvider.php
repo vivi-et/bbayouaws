@@ -22,6 +22,8 @@ class EventServiceProvider extends ServiceProvider
 
             'SocialiteProviders\\GitHub\\GitHubExtendSocialite@handle',
             'SocialiteProviders\\Kakao\\KakaoExtendSocialite@handle',
+            'SocialiteProviders\\Naver\\NaverExtendSocialite@handle',
+            'SocialiteProviders\\Facebook\\FacebookExtendSocialite@handle',
         ],
         
     ];
