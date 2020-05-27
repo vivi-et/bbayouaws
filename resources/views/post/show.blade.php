@@ -18,7 +18,7 @@
 </head>
 
 <br>
-<div class="col-sm-8 blog-main">
+<div class="col-lg-12 blog-main">
     <h2 class="blog-post-title" style="word-wrap: break-word;">{{$post->title}}</h2>
     <br>
     <p class="blog-post-meta"> {{ $post -> created_at->toFormattedDateString() }} <a
@@ -40,7 +40,6 @@
     @if(auth()->user()->id == $post->user_id)
     <hr>
     <br>
-    <hr>
     <br>
     <div>
         <div class="btn-group" style="float:right;">
@@ -56,9 +55,38 @@
             </form>
         </div>
     </div>
+
+
+    @else
+    {{-- 추천 --}}
+    <br>
+    @if($voted === 0)
+
+    <div class="btn-group" style="margin-left:50%;">
+        <form method="POST" action="/post/{{$post->id}}/upvote">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn btn-primary" style="margin-left:5px;">추천하기</button>
+        </form>
+
+        <br>
+    </div>
+    @else
+    <div class="btn-group" style="margin-left:50%;">
+        <form method="POST" action="/post/{{$post->id}}/downvote">
+            @csrf
+            @method('POST')
+            <button type="submit" class="btn" style="margin-left:5px; background-color:grey; color:white;">추천취소</button>
+        </form>
+
+        <br>
+    </div>
+
+    @endif
+
+
     @endif
     <br style="clear:both;">
-    <hr>
     @endif
 
     @if(count($post->comments))
@@ -113,10 +141,11 @@
                 @method('POST')
 
                 <div class="form-group">
-                    <textarea name="body" placeholder="Comment" class="form-control" required></textarea>
+                    <textarea name="body" placeholder="댓글을 달아주세요" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" style="float: right;">댓글 작성</button>
+                    <div style="clear: both;"></div>
                 </div>
             </form>
             @include('layouts.error')

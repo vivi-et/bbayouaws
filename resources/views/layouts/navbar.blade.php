@@ -1,4 +1,4 @@
-<div class="navbar" style="background-color: grey">
+<div class="navbar" style="background-color: grey; width:100%;">
     <div class="container d-flex justify-content-between">
 
 

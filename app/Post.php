@@ -42,6 +42,12 @@ class Post extends Model
         return $this->belongsTo(Board::class);
     }
 
+    public function upvote()
+    {
+        return $this->hasMany(Upvote::class);
+    }
+
+
 
     
 }

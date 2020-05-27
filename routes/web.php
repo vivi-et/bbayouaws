@@ -45,6 +45,8 @@ Route::get('/board/{board}/search/{string}', 'BoardController@search');
 
 Route::get('/board/{board}', 'BoardController@index');
 Route::get('/post/create/{board}', 'PostController@create');
+Route::post('/post/{post}/upvote', 'PostController@upvote');
+Route::post('/post/{post}/downvote', 'PostController@downvote');
 
 // Route::get('/giftcon/trade/{$trade}', 'GiftconTradePostController@show');
 Route::resource('/giftcon/trade', 'GiftconTradePostController');

@@ -114,6 +114,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Session' => $baseDir . '/app/Session.php',
+    'App\\Upvote' => $baseDir . '/app/Upvote.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\cr' => $baseDir . '/app/cr.php',
     'App\\r' => $baseDir . '/app/r.php',

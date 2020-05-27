@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 use App\Giftcon;
 use App\Board;
+use App\Upvote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -60,6 +62,26 @@ class PostController extends Controller
         return view('post.create')->with('board', $board);
     }
 
+    public function upvote(Post $post)
+    {
+        Upvote::create([
+            'post_id' => $post->id,
+            'user_id' => auth()->id(),
+        ]);
+        $post->increment('ups');
+
+        return back();
+    }
+    public function downvote(Post $post)
+    {
+
+        $removeVote = Upvote::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+
+        $removeVote->delete();
+        $post->decrement('ups');
+        return back();
+    }
+
 
 
     /**
@@ -70,7 +92,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-       $board = Board::find($request->board);
+        $board = Board::find($request->board);
 
         $boardno = $board->id;
 
@@ -146,10 +168,10 @@ class PostController extends Controller
 
 
         $boardposts = Post::select('posts.*')
-        ->Join('boards', 'boards.id', '=', 'posts.board_id')
-        ->where('board_id', $post->board_id)
-        ->orderby('id','desc')
-        ->paginate(5);
+            ->Join('boards', 'boards.id', '=', 'posts.board_id')
+            ->where('board_id', $post->board_id)
+            ->orderby('id', 'desc')
+            ->paginate(5);
 
 
         switch ($post->board_id) {
@@ -170,7 +192,19 @@ class PostController extends Controller
                 break;
         }
 
-        return view('post.show')->with('post', $post)->with('boardposts',$boardposts);
+        $getUpvotes = Upvote::where('post_id', $post->id)->get();
+        $haveIVoted = 0;
+
+        if (Auth::check()) {
+            foreach ($getUpvotes as $getUpvote) {
+                if ($getUpvote->user_id === auth()->user()->id) {
+                    $haveIVoted = 1;
+                }
+            }
+        }
+
+
+        return view('post.show')->with('post', $post)->with('boardposts', $boardposts)->with('upvotes', $getUpvotes)->with('voted', $haveIVoted);
         // return view('post.show', compact('package'));
     }
 
@@ -252,8 +286,6 @@ class PostController extends Controller
         $post->save();
 
         return redirect('/board/' . $board);
-
-
     }
 
     /**

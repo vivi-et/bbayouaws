@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','provider_id','provider'
+        'name', 'email', 'password', 'provider_id', 'provider'
     ];
 
     /**
@@ -45,31 +45,36 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-     public function comments()
+    public function upvotes()
+    {
+        return $this->hasMany(Upvote::class);
+    }
+
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    
 
-      public function giftcons()
+
+    public function giftcons()
     {
         return $this->hasMany(Giftcon::class);
     }
 
-        public function giftcontradepost()
+    public function giftcontradepost()
     {
         return $this->hasMany(GiftconTradePost::class);
     }
 
-    
-          public function giftcontradecomment()
+
+    public function giftcontradecomment()
     {
         return $this->hasMany(GiftconTradeComment::class);
     }
 
-    
-    
+
+
 
     public function publish(Post $post)
     {
