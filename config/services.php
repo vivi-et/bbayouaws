@@ -39,12 +39,13 @@ return [
     'kakao' => [
         'client_id' => env('KAKAO_KEY'),
         'client_secret' => env('KAKAO_SECRET'),
-        'redirect' => env('KAKAO_REDIRECT_URI'),
+        'redirect' => env('KAKAO_REDIRECT_URI')
     ],
 
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
-        'client_secret' => env('GITHUB_SECRET'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => env('GITHUB_REDIRECT_URL')
     ],
+
 ];

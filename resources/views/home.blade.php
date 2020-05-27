@@ -14,7 +14,7 @@
     </div>
 </section>
 
-
+{{-- {{  $user }} --}}
 
 
 <div style="text-align: center">

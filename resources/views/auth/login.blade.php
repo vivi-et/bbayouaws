@@ -63,16 +63,16 @@
                                 <br><br>
 
                                 {{-- 소셜 로그인 --}}
-                                <a href="/social/github">
+                                <a href="/login/github">
                                     <img src="/social/github.png" alt="">
                                 </a>
 
-                                <a href="/social/naver">
+                                <a href="/login/naver">
                                     <img src="/social/naver.png" style="width: 32px;" alt="">
                                 </a>
 
 
-                                <a href="/social/kakao">
+                                <a href="/login/kakao">
                                     <img src="/social/kakao.png" style="width: 32px;" alt="">
                                 </a>
 

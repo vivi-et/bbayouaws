@@ -25,8 +25,8 @@ Auth::routes();
 
 
 
-Route::get('/social/{provider}', ['as' => 'redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
-Route::get('/social/{provider}/callback', ['as' => 'callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);
+Route::get('/login/{provider}', ['as' => 'redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
+Route::get('/login/{provider}/callback', ['as' => 'callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);
 
 // Route::get('/{giftcon}', 'TestController@show')->name('test');
 Route::get('/mypage/trades', 'MyPageController@mytrades' );

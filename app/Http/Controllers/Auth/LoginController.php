@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -42,22 +44,29 @@ class LoginController extends Controller
 
     public function redirectToProvider($provider)
     {
+        // return Socialite::with('kakao')->redirect();
         return Socialite::driver($provider)->redirect();
     }
 
-public function handleProviderCallback($provider)
-{
+    public function handleProviderCallback($provider)
+    {
 
-    $user = Socialite::driver($provider)->user();
+        $user = Socialite::driver($provider)->user();
 
-    return $user;
-    $existingUser = User::whereEmail($user->getEmail())->first();
+        // dd($user);
 
-    if($existingUser){
-        auth()->login($existingUser);
-        return redirect($this->redirectPath());
+        //사용자 생성
+        $user = User::create([
+
+            'email' => $user->getEmail(),
+            'name' => $user->getNickname(),
+            'provider_id' => $user->getId(),
+            'provider' => $provider,
+
+        ]);
+        // 시용자 로그인
+        Auth::login($user, true);
+
+        return redirect($this->redirectTo);
     }
-}
-
-
 }
