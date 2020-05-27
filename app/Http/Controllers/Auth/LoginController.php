@@ -53,7 +53,8 @@ class LoginController extends Controller
 
         $user = Socialite::driver($provider)->user();
 
-        // dd($user);
+        dd($user);
+
 
         //사용자 생성
         $user = User::create([
