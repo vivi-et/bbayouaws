@@ -44,7 +44,6 @@ class LoginController extends Controller
 
     public function redirectToProvider($provider)
     {
-        // return Socialite::with('kakao')->redirect();
         return Socialite::driver($provider)->redirect();
     }
 
@@ -53,23 +52,28 @@ class LoginController extends Controller
 
         $user = Socialite::driver($provider)->user();
 
-        dd($user);
-
-        return $user;
 
 
-        // //사용자 생성
-        // $user = User::create([
+        // return $user;
+        $existingUser = User::whereEmail($user->getEmail())->first();
 
-        //     'email' => $user->getEmail(),
-        //     'name' => $user->getNickname(),
-        //     'provider_id' => $user->getId(),
-        //     'provider' => $provider,
+        if ($existingUser) {
+            Auth::login($user, true);
+            return redirect($this->redirectPath());
+        } else {
+            //사용자 생성
+            $user = User::create([
 
-        // ]);
-        // // 시용자 로그인
-        // Auth::login($user, true);
+                'email' => $user->getEmail(),
+                'name' => $user->getNickname(),
+                'provider_id' => $user->getId(),
+                'provider' => $provider,
 
-        // return redirect($this->redirectTo);
+            ]);
+            // 시용자 로그인
+            Auth::login($user, true);
+
+            return redirect($this->redirectTo);
+        }
     }
 }
