@@ -18,6 +18,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            \SocialiteProviders\Naver\NaverExtendSocialite::class,
+            \SocialiteProviders\Kakao\KakaoExtendSocialite::class,
+        ],
+        
     ];
 
     /**

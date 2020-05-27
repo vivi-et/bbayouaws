@@ -30,4 +30,21 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'naver' => [
+        'client_id' => env('NAVER_KEY'),
+        'client_secret' => env('NAVER_SECRET'),
+        'redirect' => env('NAVER_REDIRECT_URI'),
+    ],
+
+    'kakao' => [
+        'client_id' => env('KAKAO_KEY'),
+        'client_secret' => env('KAKAO_SECRET'),
+        'redirect' => env('KAKAO_REDIRECT_URI'),
+    ],
+
+    'github' => [
+        'client_id' => env('GITHUB_KEY'),
+        'client_secret' => env('GITHUB_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT_URI')
+    ],
 ];

@@ -10,8 +10,23 @@ use Illuminate\Support\Facades\Route;
 //         return view('welcome');
 //     });
 
+// Route::group(['middleware' => 'guest'], function() {
+    
+//     Route::get('/login/github', 'Auth\LoginController@gitgub');
+//     Route::get('/login/github/redirect', 'Auth\LoginController@gitgubRedirect');
+// });
+
+// Route::get('/social/{provider}', [
+//     'as' => 'social.login',
+//     'uses' => 'Auth\SocialController@execute',
+// ]);
+
 Auth::routes();
 
+
+
+Route::get('/social/{provider}', ['as' => 'redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
+Route::get('/social/{provider}/callback', ['as' => 'callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);
 
 // Route::get('/{giftcon}', 'TestController@show')->name('test');
 Route::get('/mypage/trades', 'MyPageController@mytrades' );

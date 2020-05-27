@@ -15,12 +15,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('이메일') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -29,12 +30,14 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('비밀번호') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -42,7 +45,8 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                        {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('로그인 정보 기억하기') }}
@@ -56,14 +60,37 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('로그인') }}
                                 </button>
+                                <br><br>
+
+                                {{-- 소셜 로그인 --}}
+                                <a href="/social/github">
+                                    <img src="/social/github.png" alt="">
+                                </a>
+
+                                <a href="/social/naver">
+                                    <img src="/social/naver.png" style="width: 32px;" alt="">
+                                </a>
+
+
+                                <a href="/social/kakao">
+                                    <img src="/social/kakao.png" style="width: 32px;" alt="">
+                                </a>
+
+
 
                                 {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('비밀번호 찾기') }}
-                                    </a>
+                                {{ __('비밀번호 찾기') }}
+                                </a>
                                 @endif --}}
                             </div>
+
                         </div>
+                        <br>
+
+
+
+
                     </form>
                 </div>
             </div>
