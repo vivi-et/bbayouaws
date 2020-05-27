@@ -55,6 +55,8 @@ class LoginController extends Controller
 
         dd($user);
 
+        return $user;
+
 
         //사용자 생성
         $user = User::create([
