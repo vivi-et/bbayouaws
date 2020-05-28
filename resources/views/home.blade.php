@@ -2,7 +2,7 @@
 
 
 @section('content')
- 
+
 
 
 
@@ -27,16 +27,17 @@
 
 
     @if(count($board->posts))
-    <div class="col" style="outline: 1px solid black; margin-right:18px;">
+    <div class="col" style="margin-right:18px;">
         <br>
-        {{ $board->board_korname }}
-        <br>
-        <br>
+        <div style="background-color: #F27405; height:40px; text-align:center; padding-top:10px;">
+            {{ $board->board_korname }}
+        </div>
         <ul class="list-group">
             @foreach ($board->posts->take(6) as $post)
-                <a href="/post/{{ $post->id }}" class="list-group-item" style="overflow: hidden; text-overflow: ellipsis; height:50px;">
-                    {{ $post->title }}
-                </a>
+            <a href="/post/{{ $post->id }}" class="list-group-item"
+                style="overflow: hidden; text-overflow: ellipsis; height:50px;">
+                {{ $post->title }}
+            </a>
             @endforeach
         </ul>
 
