@@ -56,7 +56,7 @@
 @if(count($tradeposts))
 <br>
 <div style="text-align: center">
-    <h4 style="color: grey;">거래중인 기프티콘들</h4>
+    <h4 style="color: #F27405;">거래중인 기프티콘들</h4>
 </div>
 <br>
 @include('layouts.cardhome')
