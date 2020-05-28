@@ -23,6 +23,29 @@ class GiftconController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function search(Request $request, String $string)
+    {
+
+    
+        $user = Auth::user();
+
+        $giftcons = GiftconTradePost::select('giftcons.*', 'users.name' ,'giftcon_trade_posts.*' )
+        ->Join('giftcons', 'giftcons.id', '=', 'giftcon_trade_posts.giftcon_id')
+        ->Join('users', 'users.id', '=', 'giftcon_trade_posts.user_id')
+        ->where('on_trade', '=', 1)
+        ->where('title', 'LIKE', "%{$string}%") 
+        ->orWhere('place', 'LIKE', "%{$string}%") 
+        ->get();
+
+    
+        // return $posts;
+    
+    
+        
+    return view('giftcon.index')->with('giftcons',$giftcons);
+    }
+
     public function index()
     {
 
@@ -40,7 +63,7 @@ class GiftconController extends Controller
         // $giftcons = Giftcon::latest()->get();
 
         //tasks
-        return view('giftcon.index', compact('giftcons'));
+        return view('giftcon.index')->with('giftcons',$giftcons);
     }
 
     public function mygiftcons()

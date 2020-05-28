@@ -17,9 +17,9 @@
 {{-- {{  $user }} --}}
 
 
-<div style="text-align: center">
+{{-- <div style="text-align: center">
     <h4 style="color: grey;">최근 게시물들</h4>
-</div>
+</div> --}}
 <br>
 <div class="row">
     <br>

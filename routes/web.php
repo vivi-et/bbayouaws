@@ -34,6 +34,7 @@ Route::get('/mypage/posts', 'MyPageController@myposts' );
 Route::get('/test', 'TestController@index')->name('test');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/giftcon/mygiftcons', 'GiftconController@mygiftcons');
+Route::get('/giftcon/search/{string}', 'GiftconController@search');
 Route::post('/giftcon/present', 'GiftconController@presentGiftcon');
 Route::post('/ajax/saveImage', 'AjaxUploadController@saveImage')->name('ajax.saveImage');
 Route::post('/ajax/makeTrade', 'AjaxUploadController@makeTrade')->name('ajax.makeTrade');

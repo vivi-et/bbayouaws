@@ -56,7 +56,6 @@
       <button type="submit" hidden></button>
     </form>
   </div>
-
 </div>
 @else
 <div style="text-align: center;">
