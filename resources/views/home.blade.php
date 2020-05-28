@@ -35,7 +35,7 @@
         <ul class="list-group">
             @foreach ($board->posts->take(6) as $post)
             <a href="/post/{{ $post->id }}" class="list-group-item"
-                style="overflow: hidden; text-overflow: ellipsis; height:50px;">
+                style="overflow: hidden; text-overflow: ellipsis; white-space:nowrap; height:50px;">
                 {{ $post->title }}
             </a>
             @endforeach
