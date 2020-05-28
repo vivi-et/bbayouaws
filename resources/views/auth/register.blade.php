@@ -76,6 +76,7 @@
                                 </button>
                             </div>
                         </div>
+                        @include('layouts.socialLogin')
                     </form>
                 </div>
             </div>

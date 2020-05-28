@@ -66,10 +66,10 @@
         @else
         <div class="ml-auto">
             <a href="/login">
-                <strong style="color: white;">로그인</strong>
+                <strong style="color: black;">로그인</strong>
             </a>
             <a href="/register">
-                <strong style="color: white;">회원가입</strong>
+                <strong style="color: black;">회원가입</strong>
             </a>
         </div>
         @endif
