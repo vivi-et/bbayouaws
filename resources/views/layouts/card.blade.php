@@ -21,10 +21,10 @@
                 @else
 
 
-                <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                    src="/storage/giftcon_images/{{ $giftcon->imagepath }}">
+                <img class="bd-placeholder-img card-img-top"  width="100%" height="225"
+                    src="/storage/giftcon_images/{{ $giftcon->imagepath }}" >
                 @endif
-                <div class="card-body">
+                <div class="card-body" >
                     <p class="card-text">
                         <a href="/giftcon/trade/{{$giftcon->id}}">
                             {{$giftcon->title}}

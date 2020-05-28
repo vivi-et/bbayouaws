@@ -8,9 +8,9 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h2>BBAYOU</h2>
+        <h2 style="color: #F27405;">BBAYOU</h2>
         <h1></h1>
-        <p class="lead text-muted">A Giftcon Commumity</p>
+        <p class="lead text-muted">사용하지 않는 기프티콘들을 거래해보세요</p>
     </div>
 </section>
 
@@ -18,7 +18,7 @@
 
 
 <div style="text-align: center">
-    <h3>최근 게시물들</h3>
+    <h4 style="color: grey;">최근 게시물들</h4>
 </div>
 <br>
 <div class="row">
@@ -55,7 +55,7 @@
 @if(count($tradeposts))
 <br>
 <div style="text-align: center">
-    <h3>거래중인 기프티콘들</h3>
+    <h4 style="color: grey;">거래중인 기프티콘들</h4>
 </div>
 <br>
 @include('layouts.cardhome')

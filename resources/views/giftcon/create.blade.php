@@ -56,7 +56,7 @@
                         상품명
                     </td>
                     <td>
-                        <input id="title" name="title">
+                        <input id="title" name="title" required>
                     </td>
 
                 </tr>
@@ -78,7 +78,7 @@
             </div>
             <br>
             <div class="form-group">
-                <button type="submit" id="finalsubmitbtn" class="btn btn-primary">기프티콘 등록</button>
+                <button type="submit" id="finalsubmitbtn" class="btn" style="background-color: yellowgreen">기프티콘 등록</button>
         </form>
         <br>
 
@@ -90,7 +90,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">상품 이미지를 선택해주세요</h5>
+                <h5 class="modal-title" id="exampleModalLabel">상품 이미지를 드래그해서 선택해주세요</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

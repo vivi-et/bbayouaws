@@ -17,7 +17,9 @@
 
             <p>
                 <a href="/giftcon/create" class="btn btn-primary my-2">기프티콘 추가하기</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                <button type="button" class="btn btn-secondary" onclick="showdesc()">
+                    어떻게 사용하나요?
+                </button>
             </p>
         </div>
     </section>
@@ -47,9 +49,9 @@
             <div class="modal-body">
                 <div style="text-align: center;">
                     <input id="inputGiftconId" hidden>
-                   기프티콘: <input id="inputGiftconTitle" style="text-align: center;" readonly>
-                   <br>
-                   받는사람: <input id="inputGiftconReciever" style="text-align: center;" readonly>
+                    기프티콘: <input id="inputGiftconTitle" style="text-align: center;" readonly>
+                    <br>
+                    받는사람: <input id="inputGiftconReciever" style="text-align: center;" readonly>
                     <br>
                     <br>
                     {{-- 유저 검색창 --}}
@@ -71,7 +73,8 @@
                     <input type="text" name="username" id="submitUsername" hidden>
                     <input type="text" name="userID" id="submitUserID" hidden>
                     <input type="text" name="giftconID" id="submitGiftconID" hidden>
-                    <button id="btnSubmitFormPresentGiftcon" onclick="return confirm('정말 선물하시겠습니까? \n취소하실 수 없습니다.')" type="submit" class="btn btn-primary">선물하기</button>
+                    <button id="btnSubmitFormPresentGiftcon" onclick="return confirm('정말 선물하시겠습니까? \n취소하실 수 없습니다.')"
+                        type="submit" class="btn btn-primary">선물하기</button>
                 </form>
             </div>
         </div>
@@ -80,12 +83,47 @@
 
 
 
+{{-- 기능 설명 모달 --}}
+{{-- 기능 설명 모달 --}}
+{{-- 기능 설명 모달 --}}
+<div class="modal fade bd-example-modal-lg" id="descModalLong" tabindex="-1" role="dialog" aria-labelledby="descModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="descModalLongTitle">기프티콘 사용해보기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="btn btn-primary" style="pointer-events:none;">기프티콘 추가하기</div> 를 눌러서 기프티콘을 등록할 수 있습니다.
+                <br><br>
 
-
+                등록된 기프티콘들은 이 페이지에서 조회하실수 있습니다.
+                <br>
+                <br>
+                <div class="btn" style="pointer-events:none; background-color: #fd7e14; color:white">선물하기</div> 를 통해 다른 사람에게 기프티콘을 선물할 수 있습니다.
+                <br><br><br>
+                <div class="btn" style="pointer-events:none; background-color: #fd7e14; color:white">사용하기</div> 는 해당 기프티콘을 상품으로 교환할수 있게 바코드를 출력해줍니다. 
+                <br>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;이렇게 사용된 기프티콘은 다시 등록하실수 없습니다. 
+                <br><br>
+                <div class="btn" style="pointer-events:none; background-color: #fd7e14; color:white">거래하기</div> 버튼을 누르면 기프티콘 거래 게시판에 등록되며,
+                <br>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; 이후 다른 사람들과 댓글형식으로 기프티콘을 교환할수 있습니다.
+                <br>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
 @push('script')
+{{-- ajax CSRF --}}
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -93,6 +131,13 @@
         }
     });
 
+</script>
+
+{{-- 설명모달 --}}
+<script>
+    function showdesc() {
+$('#descModalLong').modal('toggle');
+    }
 </script>
 
 <style>
