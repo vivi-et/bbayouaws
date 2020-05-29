@@ -122,6 +122,7 @@ class AjaxUploadController extends Controller
 
         // $path = $image_p->storeAs('public/cover_images', $fileNameToStore);
 
+        unlink($src);
 
         return response()->json([
             'message' => '성공!',
@@ -409,14 +410,19 @@ class AjaxUploadController extends Controller
         else
             imagejpeg($images_fin, $destination);
 
-        unset($destination);
+        // unset($destination);
         // ImageDestroy($images_orig);
         // ImageDestroy($images_fin);
 
+        
         $fileNameToStore = 're' . $fileNameToStore;
-
+        
+        unlink($img);
+        // unlink($destination);
 
         // resize_image('storage/temp_images/' . $fileNameToStore, 472, 961);
+
+
 
         return response()->json([
             'status' => 0,

@@ -53,7 +53,7 @@
                 <div class="dropdown-content">
                     <a href="/mypage/trades">기프티콘 거래현황</a>
                     <a href="/mypage/posts">내 글들</a>
-                    <a href="#">설정</a>
+                    <a href="/settings">설정</a>
                 </div>
             </div>
 

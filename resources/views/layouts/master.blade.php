@@ -126,7 +126,7 @@
     </div>
     @stack('script')
     @stack('style')
-    @include('layouts.footer')
+    {{-- @include('layouts.footer') --}}
 </body>
 
 </html>

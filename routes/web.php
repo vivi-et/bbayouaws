@@ -27,7 +27,9 @@ Auth::routes();
 
 Route::get('/login/{provider}', ['as' => 'redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
 Route::get('/login/{provider}/callback', ['as' => 'callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);
-
+Route::get('/settings','SettingController@index');
+Route::get('/settings/panel','SettingController@panel');
+Route::post('/settings/authenticate','SettingController@authenticate');
 // Route::get('/{giftcon}', 'TestController@show')->name('test');
 Route::get('/mypage/trades', 'MyPageController@mytrades' );
 Route::get('/mypage/posts', 'MyPageController@myposts' );

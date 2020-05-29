@@ -61,6 +61,7 @@
     <br>
 </div>
 @endif
+<br><br><br>
 
 <div style="text-align: center;">
     내 기프티콘 거래댓글
@@ -118,10 +119,8 @@
 
 
 
-
     </tbody>
 </table>
-
 @else
 <div style="text-align:center;">
     <h5>현재 작성한 거래댓글이 없습니다.</h5>
