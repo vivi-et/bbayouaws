@@ -51,8 +51,6 @@
                             <input type="text" class="form-control" id="toName" name="toName"
                                 placeholder="{{ Auth::user()->name }}" required>
                         </div>
-                        <button>중복확인</button>
-                        <div>중복확인</div>
                     </div>
                     <button type="submit" class="btn btn-primary"
                         style="width: 20%; float: left; margin-left:17%;">확인</button>
