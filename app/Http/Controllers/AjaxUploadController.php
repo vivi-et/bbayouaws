@@ -190,7 +190,7 @@ class AjaxUploadController extends Controller
         preg_match('/\b\d{9}\b/', $string, $ocrorderno);
 
 
-
+$rawstring = $string;
 
 
 
@@ -331,6 +331,10 @@ class AjaxUploadController extends Controller
         //빈 공백 쳐내기
         for ($i = 0; $i < 5; $i++) {
             $catdata[$i] = str_replace(' ', '', $catdata[$i]);
+        }
+
+        if(strpos($rawstring,'사용완료')){          //사용완료 글이 있을경우 거부
+            $catdata[4] = '사용완료';
         }
 
 
