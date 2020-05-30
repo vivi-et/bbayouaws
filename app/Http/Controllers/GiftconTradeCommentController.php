@@ -77,7 +77,7 @@ class GiftconTradeCommentController extends Controller
         // }
 
         return response()->json([
-            'message' => 'success',
+            'message' => '등록이 완료되었습니다!',
         ]);
     }
 

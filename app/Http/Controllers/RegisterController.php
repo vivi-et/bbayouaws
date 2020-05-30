@@ -38,7 +38,7 @@ class RegisterController extends Controller
     {
         // validate the form
         $this->validate(request(), [
-            'name' => 'required',
+            'name' => 'required|different:"admin"',
             'email' => 'required',
             'password' => 'required|confirmed'
         ]);

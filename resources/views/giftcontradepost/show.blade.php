@@ -114,7 +114,7 @@
             <div class="row">
                 @endif
                 @foreach($comment->giftcons as $giftcon)
-                <div class="card" style="margin-left: 18px; margin-top:8px">
+                <div class="card" style="margin-left: 18px; margin-top:8px; width:30%;">
                     <div class="col" style="text-align: center;">
                         <img style="width:100px; height:100px;" class="center"
                             src="/storage/giftcon_images/{{ $giftcon->imagepath }}">
