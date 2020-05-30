@@ -42,8 +42,8 @@
         @if(Auth::check())
         <div class="ml-auto">
             <div class="dropdown" style="background-color: #F27405; border-radius:10px; margin-top:5px; ">
-                <button class="btn"> <a href="#" style="color : black;"> <strong>{{ Auth::user()->name}}님
-                            안녕하세요!</strong> </a></button>
+                <button class="btn"> <strong>{{ Auth::user()->name}}님
+                            안녕하세요!</strong></button>
                 <div class="dropdown-content" style="background-color: white; border-radius: 10px;">
                     <a href="/mypage/trades" style="border-top: 1px dashed black;">기프티콘 거래현황</a>
                     <a href="/mypage/posts" style="border-top: 1px dashed black;">내 글들</a>
@@ -67,7 +67,7 @@
             </a>
         </div>
         @endif
-        <div class="aa-input-container" id="aa-input-container" style="margin-left:74%; margin-top:5px; float: right;">
+        <div class="aa-input-container" id="aa-input-container" style="margin-left:55%; margin-top:5px; position: absolute; top:60px; ">
             <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search"
                 autocomplete="off" style="border-radius: 50px; width:300px; height:35px;" />
             <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
@@ -159,6 +159,9 @@
 @push('style')
 
 <style>
+    .navbar a {
+        text-decoration: none;
+    }
     /* Dropdown Button */
     .dropbtn {
         background-color: #4CAF50;

@@ -55,6 +55,8 @@
             </form>
         </div>
     </div>
+    <br>
+    <br>
 
 
     @else
@@ -68,7 +70,8 @@
             @method('POST')
             <button type="submit" class="btn btn-primary" style="margin-left:5px;">추천하기</button>
         </form>
-
+<br>
+<br>
         <br>
     </div>
     @else
@@ -93,20 +96,22 @@
     <div class="comments">
         @foreach ($post->comments as $comment)
         <li class="list-group-item">
-            @if(Auth::check())
-            @if(auth()->user()->id == $comment->user_id)
             <strong style="float: left;">{{ $comment->user->name }}</strong>
             <div style="float: left; margin-left:10px;">{{ $comment->created_at->diffforhumans() }}</div>
             <div style="clear: both;"></div>
+            @if(Auth::check())
+            @if(auth()->user()->id == $comment->user_id)
             <form id="editform" action="/comment/{{ $comment->id }}" method="POST" style="display: none;">
                 @csrf
                 @method('PATCH')
                 <input name="body" style="width: 100%; height:100px; margin-top:5px;" value="{{ $comment->body }}">
                 <button type="submit" class="btn" id="commenteditsubmitbtn" style="float: right">수정하기</button>
+ 
                 <button type="button" class="btn" onclick="toggleEditForm()" id="commenteditcancelbtn"
                     style="float: right">취소</button>
                 <div style="clear: both;"></div>
             </form>
+            @endif
             <div id="editdiv" style="width:100%; margin-top:5px; display:block">{{ $comment->body }}</div>
             <div id="commentbuttons" class="buttons" style="float: right">
                 <button id="toggleEditFormbtn" onclick="toggleEditForm()" class="btn">수정</button>
@@ -119,7 +124,7 @@
                         class="btn">X</button>
                 </form>
             </div>
-            @endif
+      
             @endif
             <div style="clear: both;"></div>
 
