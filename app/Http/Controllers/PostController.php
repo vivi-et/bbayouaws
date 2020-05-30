@@ -229,8 +229,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+
         if (auth()->user()->id !== $post->user_id) {
-            return redirect('/posts')->withErrors('error', 'Unauthorized Page');
+            return redirect('/posts')->withErrors('error', '권한이 없습니다');
         }
         // PATCH /tasks/id
 

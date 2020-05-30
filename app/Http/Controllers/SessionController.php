@@ -108,6 +108,7 @@ class SessionController extends Controller
      */
     public function destroy(Session $session)
     {
+        session()->forget('auth');
         auth()->logout();
         return redirect()->home();
     }

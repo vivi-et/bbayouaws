@@ -27,8 +27,7 @@ Auth::routes();
 
 Route::get('/login/{provider}', ['as' => 'redirect', 'uses' => 'Auth\LoginController@redirectToProvider']);
 Route::get('/login/{provider}/callback', ['as' => 'callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);
-Route::get('/settings','SettingController@index');
-Route::get('/settings/panel','SettingController@panel');
+
 Route::post('/settings/authenticate','SettingController@authenticate');
 // Route::get('/{giftcon}', 'TestController@show')->name('test');
 Route::get('/mypage/trades', 'MyPageController@mytrades' );
@@ -50,6 +49,17 @@ Route::get('/board/{board}', 'BoardController@index');
 Route::get('/post/create/{board}', 'PostController@create');
 Route::post('/post/{post}/upvote', 'PostController@upvote');
 Route::post('/post/{post}/downvote', 'PostController@downvote');
+
+// 내 계정설정 /settings
+Route::get('/settings', 'SettingController@index');
+Route::get('/settings/panel','SettingController@panel');
+Route::DELETE('/settings/panel/delete/{user}','SettingController@destroy');
+Route::put('/settings/panel/changename/{user}','SettingController@changename');
+Route::put('/settings/panel/changepass/{user}','SettingController@changepass');
+// Route::resource('/settings', 'SettingController');
+
+//사용자
+
 
 // Route::get('/giftcon/trade/{$trade}', 'GiftconTradePostController@show');
 Route::resource('/giftcon/trade', 'GiftconTradePostController');

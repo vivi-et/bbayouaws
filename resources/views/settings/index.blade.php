@@ -13,7 +13,7 @@
     <br><br>
     <button class="btn btn-primary" style="width: 30%; height:60px">개인정보 변경</button>
     <button class="btn btn-primary" style="width: 30%; height:60px">비밀번호 변경</button>
-    <button class="btn btn-primary" style="width: 30%; height:60px">개인정보 변경</button>
+    <button class="btn btn-danger" style="width: 30%; height:60px">회원탈퇴</button>
     <br>
     <br>
     <br>
