@@ -13,7 +13,7 @@
 <main role="main">
     <section class="jumbotron text-center">
         <div class="container">
-            <h2>내 기프티콘들</h2>
+            <h2 style="color:#F27405">내 기프티콘들</h2>
 
             <p>
                 <a href="/giftcon/create" class="btn btn-primary my-2">기프티콘 추가하기</a>

@@ -7,7 +7,7 @@
 <main role="main">
     <section class="jumbotron text-center">
         <div class="container">
-            <h2>기프티콘</h2>
+            <h2 style="color: #F27405">기프티콘</h2>
             <p class="lead text-muted">등록한 기프티콘을 다른 사람들이랑 거래해보세요</p>
             {{-- <p>
                 <a href="#" class="btn btn-primary my-2">Main call to action</a>

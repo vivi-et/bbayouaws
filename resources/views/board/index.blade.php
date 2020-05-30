@@ -4,7 +4,7 @@
 
 <br>
 
-<H3> {{ $board->board_korname }}</H3>
+<H3 style="color: #F27405"> {{ $board->board_korname }}</H3>
 <br>
 <br>
 @if(count($posts))

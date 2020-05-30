@@ -1,4 +1,4 @@
-<div class="navbar" style="background-color: rgb(204, 203, 203); width:100%;">
+<div class="navbar" style="background-color: rgb(231, 229, 229); width:100%;">
     <div class="container d-flex justify-content-between">
 
 
@@ -41,13 +41,13 @@
 
         @if(Auth::check())
         <div class="ml-auto">
-            <div class="dropdown">
+            <div class="dropdown" style="background-color: #F27405; border-radius:10px; margin-top:5px; ">
                 <button class="btn"> <a href="#" style="color : black;"> <strong>{{ Auth::user()->name}}님
                             안녕하세요!</strong> </a></button>
-                <div class="dropdown-content">
-                    <a href="/mypage/trades">기프티콘 거래현황</a>
-                    <a href="/mypage/posts">내 글들</a>
-                    <a href="/settings">설정</a>
+                <div class="dropdown-content" style="background-color: white; border-radius: 10px;">
+                    <a href="/mypage/trades" style="border-top: 1px dashed black;">기프티콘 거래현황</a>
+                    <a href="/mypage/posts" style="border-top: 1px dashed black;">내 글들</a>
+                    <a href="/settings" style="border-top: 1px dashed black;">설정</a>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
             </a>
         </div>
         @endif
-        <div class="aa-input-container" id="aa-input-container" style="margin-left:74%; float: right;">
+        <div class="aa-input-container" id="aa-input-container" style="margin-left:74%; margin-top:5px; float: right;">
             <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search"
                 autocomplete="off" style="border-radius: 50px; width:300px; height:35px;" />
             <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
