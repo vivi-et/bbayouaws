@@ -67,7 +67,7 @@
             </a>
         </div>
         @endif
-        <div class="aa-input-container" id="aa-input-container" style="margin-left:55%; margin-top:5px; position: absolute; top:60px; ">
+        <div class="aa-input-container" id="aa-input-container" style="margin-left:50%; margin-top:5px; position: absolute; top:60px; ">
             <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search"
                 autocomplete="off" style="border-radius: 50px; width:300px; height:35px;" />
             <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
