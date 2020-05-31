@@ -34,11 +34,11 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(RegisterControllerRequest $request)
     {
         // validate the form
         $this->validate(request(), [
-            'name' => 'required|different:"admin"',
+            'name' => ['required', 'string', 'max:20', 'not_in:admin,operator,운영자,관리자'],
             'email' => 'required',
             'password' => 'required|confirmed'
         ]);
